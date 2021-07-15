@@ -1,5 +1,4 @@
 import { Row, Col, Button, Tooltip } from 'antd';
-import React from 'react';
 import {
   toolbar,
   toolbarDate,

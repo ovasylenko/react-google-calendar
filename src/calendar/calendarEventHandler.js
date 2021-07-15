@@ -8,7 +8,7 @@ const CalendarEventHandler = (function () {
    * @returns {Object} allEvents - A new object reference for all events
   */
   function addEvent (allEvents, newEvent) {
-    const time = moment (newEvent.start).hours ();
+    const time = moment(newEvent.start).hours();
     const eventWithMeatInfo = {
       ...newEvent,
       startWeek: moment (newEvent.start).week (),

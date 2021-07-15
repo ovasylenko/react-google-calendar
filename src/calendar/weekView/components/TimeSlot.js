@@ -1,4 +1,3 @@
-import React from 'react';
 import {Col} from 'antd';
 import {col, slot, lightHighlighter} from '../styles';
 import {isTodaysDate} from '../../utils';
