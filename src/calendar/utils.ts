@@ -66,7 +66,7 @@ export const times = [
    *  height - CSS height of the element
    * }
   */
-export const generateWeekViewCoordinates = (event, startDate) => {
+export const generateWeekViewCoordinates = (event: any, startDate: any) => {
   const start = moment (event.start);
   const end = moment (event.end);
   const duration = moment.duration (end.diff (start));
@@ -112,6 +112,7 @@ export const generateWeekViewCoordinates = (event, startDate) => {
   }
 
   if (weekStart.week () < end.week ()) {
+    // @ts-expect-error ts-migrate(2532) FIXME: Object is possibly 'undefined'.
     width = 100 - left;
   }
 
@@ -128,7 +129,7 @@ export const generateWeekViewCoordinates = (event, startDate) => {
  * @param {dateStamp} dateStamp - Date Stamp to check
  * @return {boolean}
  */
-export const isTodaysDate = dateStamp => {
+export const isTodaysDate = (dateStamp: any) => {
   const today = moment ();
   dateStamp = moment (dateStamp);
   return (

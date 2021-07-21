@@ -7,7 +7,7 @@ const CalendarEventHandler = (function () {
    * @param {Object} newEvent - Event object of the new event
    * @returns {Object} allEvents - A new object reference for all events
   */
-  function addEvent(allEvents, newEvent) {
+  function addEvent(allEvents: any, newEvent: any) {
     const time = moment(newEvent.start).hours();
     const eventWithMeatInfo = {
       ...newEvent,
@@ -29,7 +29,11 @@ const CalendarEventHandler = (function () {
    * @params {string} title - Title of the event
    * @returns {string} id - Unique id
   */
-  function generateUniqueId({ start, title, end }) {
+  function generateUniqueId({
+    start,
+    title,
+    end
+  }: any) {
     return start + title + end;
   }
 
@@ -39,9 +43,9 @@ const CalendarEventHandler = (function () {
    * @param {arr} allEvents - Array of all the events
    * @returns {Object} allEvents - A new object reference for all events
   */
-  function deleteEvent(eventId, allEvents) {
+  function deleteEvent(eventId: any, allEvents: any) {
     Object.keys(allEvents).forEach(time => {
-      allEvents[time] = allEvents[time].filter(event => event.id !== eventId);
+      allEvents[time] = allEvents[time].filter((event: any) => event.id !== eventId);
     });
     return { ...allEvents };
   }
@@ -53,10 +57,10 @@ const CalendarEventHandler = (function () {
    * @param {arr} allEvents - Array of all the events
    * @returns {Object} allEvents - A new object reference for all events
   */
-  function updateEvent(eventId, updatedEvent, allEvents) {
+  function updateEvent(eventId: any, updatedEvent: any, allEvents: any) {
     Object.keys(allEvents).forEach(time => {
       allEvents[time] = allEvents[time].map(
-        event => (event.id === eventId ? { ...event, ...updatedEvent } : event)
+        (event: any) => event.id === eventId ? { ...event, ...updatedEvent } : event
       );
     });
     return { ...allEvents };

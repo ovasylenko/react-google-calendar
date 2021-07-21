@@ -5,9 +5,11 @@ import { inputStyles } from '../styles';
 
 const { RangePicker } = DatePicker;
 
-function AddEvent(props) {
+function AddEvent(props: any) {
   return (
+    // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <React.Fragment>
+      {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
       <Input
         type="text"
         placeholder="Add Title"
@@ -17,6 +19,7 @@ function AddEvent(props) {
         autoFocus={true}
         onChange={props.onTitleChange}
       />
+      {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
       <RangePicker
         style={{ width: '100%' }}
         value={[moment(props.start), moment(props.end)]}
