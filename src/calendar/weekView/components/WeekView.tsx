@@ -1,14 +1,12 @@
-import { useState } from 'react'
-import moment from 'moment'
-// @ts-expect-error ts-migrate(6142) FIXME: Module './AddEventModal' was resolved to '/Users/a... Remove this comment to see the full error message
-import AddEventModal from './AddEventModal'
-import WeekToolbar from './WeekToolbar'
-import WeekHeader from './WeekHeader'
-import TimeSlotGroup from './TimeSlotGroup'
-// @ts-expect-error ts-migrate(6142) FIXME: Module './EventHighlighter' was resolved to '/User... Remove this comment to see the full error message
-import EventHighlighter from './EventHighlighter'
-import { times, getAllDaysInTheWeek } from '../../utils'
-import { container } from '../styles'
+import { useState } from 'react';
+import moment from 'moment';
+import AddEventModal from './AddEventModal';
+import WeekToolbar from './WeekToolbar';
+import WeekHeader from './WeekHeader';
+import TimeSlotGroup from './TimeSlotGroup';
+import EventHighlighter from './EventHighlighter';
+import { times, getAllDaysInTheWeek } from '../../utils';
+import { container } from '../styles';
 
 // Functional Component Start
 function WeekView(this: any, props: any) {
@@ -92,9 +90,7 @@ function WeekView(this: any, props: any) {
 
   const { events } = props
   return (
-    // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <div style={container}>
-      {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
       <AddEventModal
         visible={showAddEventModal}
         onCancel={onCloseAddEventModal}
@@ -104,8 +100,6 @@ function WeekView(this: any, props: any) {
         eventEnd={eventEnd}
         onTimeChange={onCurrentEventTimeChange}
       />
-
-      {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
       <WeekToolbar
         goToPreviousWeek={goToPreviousWeek}
         goToNextWeek={goToNextWeek}
@@ -128,16 +122,16 @@ function WeekView(this: any, props: any) {
           {events[time] &&
             events[time].map(
               (event: any) => event.startWeek <= moment(startDate).week() &&
-              event.endWeek >= moment(startDate).week() && (
-                // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
-                <EventHighlighter
-                  onEventDelete={props.onEventDelete}
-                  onEventUpdate={props.onEventUpdate}
-                  key={event.title + event.end + event.start}
-                  startDate={startDate}
-                  event={event}
-                />
-              )
+                event.endWeek >= moment(startDate).week() && (
+                  // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+                  <EventHighlighter
+                    onEventDelete={props.onEventDelete}
+                    onEventUpdate={props.onEventUpdate}
+                    key={event.title + event.end + event.start}
+                    startDate={startDate}
+                    event={event}
+                  />
+                )
             )}
         </TimeSlotGroup>
       ))}

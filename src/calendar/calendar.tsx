@@ -20,7 +20,7 @@ function Calendar(props: any) {
   //       events: CalendarEventHandler.add(previousSate.events, event),
   //     }));
   //   };
-  const addNewEvent = (event: any) => {
+  const addNewEvent = (event: object) => {
     event = {
       ...event,
       id: CalendarEventHandler.generateId(event),

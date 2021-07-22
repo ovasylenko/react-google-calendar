@@ -47,5 +47,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/moment": "^2.13.0",
+    "ts-migrate": "^0.1.20"
   }
 }
