@@ -1,3 +1,4 @@
+import React from 'react'
 import { useState } from 'react';
 import moment from 'moment';
 import AddEventModal from './AddEventModal';
@@ -123,7 +124,6 @@ function WeekView(this: any, props: any) {
             events[time].map(
               (event: any) => event.startWeek <= moment(startDate).week() &&
                 event.endWeek >= moment(startDate).week() && (
-                  // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                   <EventHighlighter
                     onEventDelete={props.onEventDelete}
                     onEventUpdate={props.onEventUpdate}

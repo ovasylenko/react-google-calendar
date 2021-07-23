@@ -1,3 +1,4 @@
+import '../../../node_modules/antd/dist/antd.css'
 export const col = {
   border: '#e0e0e0 1px solid',
 };

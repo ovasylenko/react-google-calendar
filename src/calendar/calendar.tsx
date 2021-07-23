@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import WeekView from './weekView'
 import CalendarEventHandler from './calendarEventHandler'
 
@@ -28,7 +28,7 @@ function Calendar(props: any) {
     setEvents(CalendarEventHandler.add(events, event))
   }
 
-  const updateEvent = (eventId: any, updatedEvent: any) => {
+  const updateEvent = (eventId: string, updatedEvent: any) => {
     setEvents(CalendarEventHandler.update(
       eventId,
       updatedEvent,
@@ -43,7 +43,6 @@ function Calendar(props: any) {
   }
 
   return (
-    // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <WeekView
       events={events}
       onNewEvent={addNewEvent}
