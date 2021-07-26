@@ -72,6 +72,7 @@ function EventHighlighter(props) {
       />
       <div
         onClick={openEditEventModal}
+        // className={`${generateWeekViewCoordinates(props.event, props.startDate)} absolute bg-blue-400 border border-solid border-blue-800 text-white cursor-pointer z-10`}
         style={{
           ...generateWeekViewCoordinates(
             props.event,
@@ -81,11 +82,11 @@ function EventHighlighter(props) {
         }}
       >
         {props.event.title} <br />
-        <span style={{ fontSize: 10 }}>
+        <span className="text-xs">
           {moment(props.event.start).format('hh:mm a')}
           {' '}
-            -
-            {' '}
+          -
+          {' '}
           {moment(props.event.end).format('hh:mm a')}
         </span>
       </div>

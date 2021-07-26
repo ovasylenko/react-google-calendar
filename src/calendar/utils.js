@@ -5,18 +5,18 @@ import moment from 'moment';
    * @param {moment} currentDate - Any date in the week
    * @returns {array} days - All days in the week with date, dateStamp and weekDayName
   */
-export const getAllDaysInTheWeek = (currentDate = moment ()) => {
-  const weekStart = currentDate.clone ().startOf ('week');
+export const getAllDaysInTheWeek = (currentDate = moment()) => {
+  const weekStart = currentDate.clone().startOf('week');
 
-  const days = Array.from (Array (7))
-    .map ((day, index) => index)
-    .map (day =>
-      moment (weekStart).add (day, 'days').set ('minutes', 0).set ('seconds', 0)
+  const days = Array.from(Array(7))
+    .map((day, index) => index)
+    .map(day =>
+      moment(weekStart).add(day, 'days').set('minutes', 0).set('seconds', 0)
     )
-    .map (momentObj => ({
-      date: momentObj.date (),
+    .map(momentObj => ({
+      date: momentObj.date(),
       dateStamp: +momentObj,
-      weekDayName: momentObj.format ('ddd'),
+      weekDayName: momentObj.format('ddd'),
     }));
 
   return days;
@@ -67,60 +67,60 @@ export const times = [
    * }
   */
 export const generateWeekViewCoordinates = (event, startDate) => {
-  const start = moment (event.start);
-  const end = moment (event.end);
-  const duration = moment.duration (end.diff (start));
-  const weekStart = moment (startDate);
+  const start = moment(event.start);
+  const end = moment(event.end);
+  const duration = moment.duration(end.diff(start));
+  const weekStart = moment(startDate);
 
   // Calculating Top
-  const top = start.minutes () === 30 ? '50%' : '0%';
+  const top = start.minutes() === 30 ? '50%' : '0%';
 
   // Calculating height
-  const timeFactor = duration.hours () + duration.minutes () / 60;
+  const timeFactor = duration.hours() + duration.minutes() / 60;
   const height = timeFactor * 100;
 
   let left, width;
-  if (weekStart.week () === start.week ()) {
-    const weekDay = start.weekday ();
+  if (weekStart.week() === start.week()) {
+    const weekDay = start.weekday();
     left = (weekDay + 1) * 12.5;
   }
 
   if (
-    weekStart.week () === start.week () &&
-    weekStart.week () === end.week ()
+    weekStart.week() === start.week() &&
+    weekStart.week() === end.week()
   ) {
-    const daysDiff = duration.days ();
+    const daysDiff = duration.days();
     width = (daysDiff + 1) * 12.5 - 2;
   }
 
-  if (weekStart.week () > start.week () && weekStart.week () === end.week ()) {
+  if (weekStart.week() > start.week() && weekStart.week() === end.week()) {
     const daysDiff = moment
-      .duration (
-        end.diff (
+      .duration(
+        end.diff(
           weekStart
-            .startOf ('week')
-            .set ('hours', start.hours ())
-            .set ('minutes', start.minutes ())
+            .startOf('week')
+            .set('hours', start.hours())
+            .set('minutes', start.minutes())
         )
       )
-      .days ();
+      .days();
     width = (daysDiff + 1) * 12.5 - 2;
   }
 
-  if (weekStart.week () > start.week ()) {
+  if (weekStart.week() > start.week()) {
     left = 12.5;
   }
 
-  if (weekStart.week () < end.week ()) {
+  if (weekStart.week() < end.week()) {
     width = 100 - left;
   }
 
-  return {
+  return {//`top-auto left-1/4 h-${height} w-${width}`
     top: top + '%',
     left: left + '%',
     height: height + '%',
     width: width + '%',
-  };
+  }
 };
 
 /**
@@ -129,10 +129,10 @@ export const generateWeekViewCoordinates = (event, startDate) => {
  * @return {boolean}
  */
 export const isTodaysDate = dateStamp => {
-  const today = moment ();
-  dateStamp = moment (dateStamp);
+  const today = moment();
+  dateStamp = moment(dateStamp);
   return (
-    moment.duration (dateStamp.diff (today)).days () === 0 &&
-    today.day () === dateStamp.day ()
+    moment.duration(dateStamp.diff(today)).days() === 0 &&
+    today.day() === dateStamp.day()
   );
 };

@@ -1,18 +1,18 @@
-import {Row, Col} from 'antd';
+import { Row, Col } from 'antd';
 import TimeSlot from './TimeSlot';
-import {row, timeCol, timeString} from '../styles';
 import moment from 'moment';
 
-function TimeSlotGroup (props) {
-  const formattedTime = moment ().set ('hours', props.time).format ('h a');
+function TimeSlotGroup(props) {
+  const formattedTime = moment().set('hours', props.time).format('h a');
   return (
-    <Row type="flex" key={props.time} style={row}>
-      <Col style={timeCol} span={3}>
-        <span style={timeString}>
+    <Row key={props.time} className="relative">
+      {/* removed "type=flex" */}
+      <Col className="text-xs text-right text-gray-600" span={3}>
+        <span className="absolute right-1 -top-2">
           {formattedTime}
         </span>
       </Col>
-      {props.weekDays.map (day => (
+      {props.weekDays.map(day => (
         <TimeSlot
           key={day.dateStamp}
           dateStamp={day.dateStamp}

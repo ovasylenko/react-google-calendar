@@ -6,7 +6,6 @@ import WeekHeader from './WeekHeader'
 import TimeSlotGroup from './TimeSlotGroup'
 import EventHighlighter from './EventHighlighter'
 import { times, getAllDaysInTheWeek } from '../../utils'
-import { container } from '../styles'
 
 // Functional Component Start
 function WeekView(props) {
@@ -88,7 +87,7 @@ function WeekView(props) {
 
   const { events } = props
   return (
-    <div style={container}>
+    <div className="pr-24 pl-1 py-10">
       <AddEventModal
         visible={showAddEventModal}
         onCancel={onCloseAddEventModal}
