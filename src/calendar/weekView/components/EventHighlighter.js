@@ -30,8 +30,10 @@ function EventHighlighter(props) {
 
   const onCurrentEventTimeChange = (dates) => {
     console.log('called')
-    setEventNewStart(+dates[0])
-    setEventNewEnd(+dates[1])
+    if (dates) {
+      setEventNewStart(+dates[0])
+      setEventNewEnd(+dates[1])
+    }
   }
   const closeModal = () => {
     setShowEditEventModal(false)

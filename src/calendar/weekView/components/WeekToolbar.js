@@ -1,5 +1,4 @@
 import { Row, Col, Button, Tooltip } from 'antd'
-import { LeftOutlined, RightOutlined } from '@ant-design/icons'
 import moment from 'moment'
 
 function WeekToolbar(props) {
@@ -21,12 +20,8 @@ function WeekToolbar(props) {
       </Col>
 
       <Col span={2}>
-        <Button
-          onClick={props.goToPreviousWeek}
-          className='p-0'
-          icon={<LeftOutlined className='' />}
-        />
-        <Button onClick={props.goToNextWeek} icon={<RightOutlined />} />
+        <Button onClick={props.goToPreviousWeek} className='text-xl' icon='<' />
+        <Button onClick={props.goToNextWeek} className='text-xl' icon='>' />
       </Col>
 
       <Col span={2} className='text-2xl text-right opacity-50 font-semibold'>
