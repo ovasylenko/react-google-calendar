@@ -10,15 +10,7 @@ function Calendar(props) {
   window.addEventListener('beforeunload', () => {
     localStorage.setItem('events', JSON.stringify(events))
   })
-//   addNewEvent = event => {
-//     event = {
-//       ...event,
-//       id: CalendarEventHandler.generateId(event),
-//     };
-//     setEvents(previousSate => ({
-//       events: CalendarEventHandler.add(previousSate.events, event),
-//     }));
-//   };
+
   const addNewEvent = (event) => {
     event = {
       ...event,

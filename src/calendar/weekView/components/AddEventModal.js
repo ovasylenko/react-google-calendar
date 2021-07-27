@@ -1,18 +1,17 @@
 import { Modal, Button } from 'antd'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import AddEvent from './AddEvent'
 
 function AddEventModal(props) {
   const [title, setTitle] = useState('')
-
-  // const getDerivedStateFromProps = (nextProps) => {
-  //   if (nextProps.eventTitle) {
-  //     return setTitle(nextProps.eventTitle)
-  //   } else {
-  //     return setTitle('')
-  //   }
-  // }
-
+  useEffect(() => {
+    if (props.eventTitle) {
+      setTitle(props.eventTitle)
+    } else {
+      setTitle('')
+    }
+  }, [props])
+  
   const handleTitleChange = (event) => {
     setTitle(event.target.value)
   }
