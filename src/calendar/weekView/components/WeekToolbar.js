@@ -20,8 +20,8 @@ function WeekToolbar(props) {
       </Col>
 
       <Col span={2}>
-        <Button onClick={props.goToPreviousWeek} className='text-xl' icon='<' />
-        <Button onClick={props.goToNextWeek} className='text-xl' icon='>' />
+        <Button onClick={props.goToPreviousWeek} className='text-xl opacity-50 font-bold' icon='<' />
+        <Button onClick={props.goToNextWeek} className='text-xl opacity-50 font-bold' icon='>' />
       </Col>
 
       <Col span={2} className='text-2xl text-right opacity-50 font-semibold'>
