@@ -81,8 +81,6 @@ function WeekView(props) {
         <Calendar
           defaultValue={[new Date(), new Date().getDate() + 7]}
           locale='en-US'
-          showWeekNumbers={true}
-          // onClickWeekNumber={}
           className='react-calendar h-full ml-16'
         />
         <div className='w-full'>

@@ -19,7 +19,7 @@ export const getAllDaysInTheWeek = (currentDate = moment()) => {
 
 export const times = [
   0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22,
-  23,
+  23
 ]
 
 export const generateWeekViewCoordinates = (event, startDate) => {
@@ -28,7 +28,7 @@ export const generateWeekViewCoordinates = (event, startDate) => {
   const duration = moment.duration(end.diff(start))
   const weekStart = moment(startDate)
 
-  const top = start.minutes() === 30 ? '1/2' : '0'
+  const top = start.minutes() === 30 ? '50' : '0'
 
   const timeFactor = duration.hours() + duration.minutes() / 60
   const height = timeFactor * 100
