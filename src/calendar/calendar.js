@@ -20,19 +20,12 @@ function Calendar(props) {
   }
 
   const updateEvent = (eventId, updatedEvent) => {
-    setEvents(CalendarEventHandler.update(
-          eventId,
-          updatedEvent,
-          events
-        ),
-
-    )
+    setEvents(CalendarEventHandler.delete(eventId, events))
+    setEvents(CalendarEventHandler.add(events, updatedEvent))
   }
   const deleteEvent = (eventId) => {
-    setEvents(CalendarEventHandler.delete(eventId, events),
-    )
+    setEvents(CalendarEventHandler.delete(eventId, events))
   }
-
   return (
     <WeekView
       events={events}

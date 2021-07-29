@@ -5,6 +5,7 @@ import moment from 'moment'
 const { RangePicker } = DatePicker
 
 function AddEvent(props) {
+  
   return (
     <React.Fragment>
       <Input

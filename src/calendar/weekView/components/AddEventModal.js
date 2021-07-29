@@ -11,7 +11,7 @@ function AddEventModal(props) {
       setTitle('')
     }
   }, [props])
-  
+
   const handleTitleChange = (event) => {
     setTitle(event.target.value)
   }
