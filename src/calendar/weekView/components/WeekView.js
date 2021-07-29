@@ -6,6 +6,8 @@ import WeekHeader from './WeekHeader'
 import TimeSlotGroup from './TimeSlotGroup'
 import EventHighlighter from './EventHighlighter'
 import { times, getAllDaysInTheWeek } from '../../utils'
+import Calendar from 'react-calendar'
+import '../../../styles/Calendar.css'
 
 function WeekView(props) {
   const [startDate, setStartDate] = useState(+moment())
@@ -58,7 +60,7 @@ function WeekView(props) {
 
   const { events } = props
   return (
-    <div className='pr-24 pl-1 py-10'>
+    <div className='px-4 py-12 w-full'>
       <AddEventModal
         visible={showAddEventModal}
         onCancel={onCloseAddEventModal}
@@ -75,33 +77,43 @@ function WeekView(props) {
         startDate={startDate}
         goToToday={goToToday}
       />
+      <div className='flex justify-center content-around w-full'>
+        <Calendar
+          defaultValue={[new Date(), new Date().getDate() + 7]}
+          locale='en-US'
+          showWeekNumbers={true}
+          // onClickWeekNumber={}
+          className='react-calendar h-full ml-16'
+        />
+        <div className='w-full'>
+          <WeekHeader weekDays={weekDays} />
 
-      <WeekHeader weekDays={weekDays} />
-
-      {times.map((time) => (
-        <TimeSlotGroup
-          key={time}
-          time={time}
-          weekDays={weekDays}
-          events={events[time]}
-          openAddEventModal={openAddEventModal}
-        >
-          {events[time] &&
-            events[time].map(
-              (event) =>
-                event.startWeek <= moment(startDate).week() &&
-                event.endWeek >= moment(startDate).week() && (
-                  <EventHighlighter
-                    onEventDelete={props.onEventDelete}
-                    onEventUpdate={props.onEventUpdate}
-                    key={event.title + event.end + event.start}
-                    startDate={startDate}
-                    event={event}
-                  />
-                )
-            )}
-        </TimeSlotGroup>
-      ))}
+          {times.map((time) => (
+            <TimeSlotGroup
+              key={time}
+              time={time}
+              weekDays={weekDays}
+              events={events[time]}
+              openAddEventModal={openAddEventModal}
+            >
+              {events[time] &&
+                events[time].map(
+                  (event) =>
+                    event.startWeek <= moment(startDate).week() &&
+                    event.endWeek >= moment(startDate).week() && (
+                      <EventHighlighter
+                        onEventDelete={props.onEventDelete}
+                        onEventUpdate={props.onEventUpdate}
+                        key={event.title + event.end + event.start}
+                        startDate={startDate}
+                        event={event}
+                      />
+                    )
+                )}
+            </TimeSlotGroup>
+          ))}
+        </div>
+      </div>
     </div>
   )
 }

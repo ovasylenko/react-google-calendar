@@ -1,10 +1,10 @@
 import React from 'react';
 // import logo from './logo.svg';
 import './App.css';
-import Calendar from './calendar';
+import SkillCrucialCalendar from './calendar';
 
 function App() {
-  return <Calendar />
+  return <SkillCrucialCalendar />
 }
 
 export default App;

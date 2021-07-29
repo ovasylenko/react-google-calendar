@@ -1,33 +1,26 @@
-import { Row, Col, Button, Tooltip } from 'antd'
 import moment from 'moment'
 
 function WeekToolbar(props) {
   const formattedDate = moment(props.startDate).format('MMM YYYY')
+
   return (
-    <Row type='flex' gutter={4} className='pb-4'>
-      <Col span={6} offset={3} className='text-2xl font-bold'>
-        SkillCrucial Calendar
-      </Col>
-      <Col span={3} offset={8}>
-        <Tooltip placement='topLeft' title={moment().format('dddd, MMM D')}>
-          <Button
-            onClick={props.goToToday}
-            className='font-semibold opacity-70'
-          >
+    <div className='flex content-center justify-between w-full pb-4'>
+      <div className='ml-28 text-4xl text-gray-600'>SkillCrucial Calendar</div>
+      <div className='flex justify-end content-center '>
+        <div className='flex justify-center content-center mx-4'>
+          <button onClick={props.goToPreviousWeek} className='mx-4'>
+            Previous week
+          </button>
+          <button onClick={props.goToToday} className='mx-4 font-bold'>
             Today
-          </Button>
-        </Tooltip>
-      </Col>
-
-      <Col span={2}>
-        <Button onClick={props.goToPreviousWeek} className='text-xl opacity-50 font-bold' icon='<' />
-        <Button onClick={props.goToNextWeek} className='text-xl opacity-50 font-bold' icon='>' />
-      </Col>
-
-      <Col span={2} className='text-2xl text-right opacity-50 font-semibold'>
-        {formattedDate}
-      </Col>
-    </Row>
+          </button>
+          <button onClick={props.goToNextWeek} className='mx-4'>
+            Next week
+          </button>
+        </div>
+        <div className='text-xl text-gray-600'>{formattedDate}</div>
+      </div>
+    </div>
   )
 }
 

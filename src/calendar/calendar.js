@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import WeekView from './weekView'
 import CalendarEventHandler from './calendarEventHandler'
 
-function Calendar(props) {
+function SkillCrucialCalendar() {
   const [events, setEvents] = useState({})
   useEffect(() => {
     setEvents(JSON.parse(localStorage.getItem('events')) || {})
@@ -28,6 +28,7 @@ function Calendar(props) {
   }
   return (
     <WeekView
+      className='flex-grow w-max'
       events={events}
       onNewEvent={addNewEvent}
       onEventUpdate={updateEvent}
@@ -35,4 +36,4 @@ function Calendar(props) {
     />
   )
 }
-export default Calendar
+export default SkillCrucialCalendar
