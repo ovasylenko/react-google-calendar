@@ -21,11 +21,13 @@ function WeekView(props) {
     setStartDate(+dateAfter7Days)
     setWeekDays(getAllDaysInTheWeek(dateAfter7Days))
   }
+
   const goToPreviousWeek = () => {
     const dateBefore7Days = moment(startDate).subtract(7, 'days')
     setStartDate(+dateBefore7Days)
     setWeekDays(getAllDaysInTheWeek(dateBefore7Days))
   }
+
   const goToToday = () => {
     setStartDate(+moment())
     setWeekDays(getAllDaysInTheWeek())
@@ -79,9 +81,13 @@ function WeekView(props) {
       />
       <div className='flex justify-center content-around w-full'>
         <Calendar
-          defaultValue={[new Date(), new Date().getDate() + 7]}
+          value={new Date(startDate)}
           locale='en-US'
-          className='react-calendar h-full ml-16'
+          onClickDay={(val) => {
+            setStartDate(moment(val))
+            setWeekDays(getAllDaysInTheWeek(moment(val)))
+          }}
+          className='react-calendar h-full ml-16 p-3 shadow-lg rounded-xl'
         />
         <div className='w-full'>
           <WeekHeader weekDays={weekDays} />
