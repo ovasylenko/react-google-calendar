@@ -5,7 +5,7 @@ import moment from 'moment'
 const { RangePicker } = DatePicker
 
 function AddEvent(props) {
-  
+
   return (
     <React.Fragment>
       <Input
@@ -22,7 +22,7 @@ function AddEvent(props) {
         value={[moment(props.start), moment(props.end)]}
         onChange={props.onTimeChange}
         showTime={{
-          format: 'HH:mm',
+          format: 'HH:mm a',
           hourStep: 1,
           minuteStep: 30,
           defaultValue: [moment(props.start), moment(props.end)],
@@ -33,4 +33,4 @@ function AddEvent(props) {
   )
 }
 
-export default AddEvent
+export const MemoizedAddEvent = React.memo(AddEvent);

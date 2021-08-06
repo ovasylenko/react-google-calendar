@@ -1,33 +1,33 @@
-import { useState, useEffect } from 'react'
-import WeekView from './weekView'
+import { useCallback, useState } from 'react'
+import MemoizedWeekView from './weekView/'
 import CalendarEventHandler from './calendarEventHandler'
+import React from 'react'
 
-function SkillCrucialCalendar() {
-  const [events, setEvents] = useState({})
-  useEffect(() => {
-    setEvents(JSON.parse(localStorage.getItem('events')) || {})
-  }, [])
+function SkillCrucialCalendar({ eventsFromProps }) {
+  const [events, setEvents] = useState(eventsFromProps)
   window.addEventListener('beforeunload', () => {
     localStorage.setItem('events', JSON.stringify(events))
   })
-
-  const addNewEvent = (event) => {
+  const addNewEvent = useCallback((event) => {
     event = {
       ...event,
       id: CalendarEventHandler.generateId(event),
     }
     setEvents(CalendarEventHandler.add(events, event))
-  }
+  }, [events]);
 
-  const updateEvent = (eventId, updatedEvent) => {
+  const updateEvent = useCallback((eventId, updatedEvent) => {
     setEvents(CalendarEventHandler.delete(eventId, events))
     setEvents(CalendarEventHandler.add(events, updatedEvent))
-  }
-  const deleteEvent = (eventId) => {
+  }, [events]);
+
+  const deleteEvent = useCallback((eventId) => {
     setEvents(CalendarEventHandler.delete(eventId, events))
-  }
+  }, [events]);
+
+
   return (
-    <WeekView
+    <MemoizedWeekView
       className='flex-grow w-max'
       events={events}
       onNewEvent={addNewEvent}
@@ -36,4 +36,4 @@ function SkillCrucialCalendar() {
     />
   )
 }
-export default SkillCrucialCalendar
+export const MemoizedSkillCrucialCalendar = React.memo(SkillCrucialCalendar)

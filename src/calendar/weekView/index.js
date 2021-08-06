@@ -1,3 +1,3 @@
-import WeekView from './components/WeekView';
+import { MemoizedWeekView } from './components/WeekView';
 
-export default WeekView;
+export default MemoizedWeekView;

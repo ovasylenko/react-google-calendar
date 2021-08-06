@@ -3,15 +3,15 @@ import moment from 'moment'
 const CalendarEventHandler = (function () {
   function addEvent(allEvents, newEvent) {
     const time = moment(newEvent.start).hours()
-    const eventWithMeatInfo = {
+    const eventWithMeetInfo = {
       ...newEvent,
       startWeek: moment(newEvent.start).week(),
       endWeek: moment(newEvent.end).week(),
     }
     if (allEvents[time]) {
-      allEvents[time].push(eventWithMeatInfo)
+      allEvents[time].push(eventWithMeetInfo)
     } else {
-      allEvents[time] = [eventWithMeatInfo]
+      allEvents[time] = [eventWithMeetInfo]
     }
     return { ...allEvents }
   }

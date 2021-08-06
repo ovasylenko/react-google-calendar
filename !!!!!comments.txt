@@ -1,0 +1,2 @@
+On adding new event, when title is written, if change time/date title disappears.
+

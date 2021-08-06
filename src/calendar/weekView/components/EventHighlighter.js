@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState, useCallback } from 'react'
 import moment from 'moment'
-import AddEventModal from './AddEventModal'
+import { MemoizedAddEventModal } from './AddEventModal'
 import { generateWeekViewCoordinates } from '../../utils'
 import { eventHighlighter } from './styles'
 
@@ -9,39 +9,40 @@ function EventHighlighter(props) {
   const [eventNewStart, setEventNewStart] = useState(null)
   const [eventNewEnd, setEventNewEnd] = useState(null)
 
-  const deleteEvent = () => {
+  const deleteEvent = useCallback(() => {
     props.onEventDelete(props.event.id)
     setShowEditEventModal(false)
-  }
+  }, [props])
 
-  const updateEvent = (title) => {
+  const updateEvent = useCallback((title) => {
     props.onEventUpdate(props.event.id, {
       title,
       start: eventNewStart,
       end: eventNewEnd,
     })
     setShowEditEventModal(false)
-  }
-  const openEditEventModal = () => {
+  }, [eventNewStart, eventNewEnd, props]);
+
+  const openEditEventModal = useCallback(() => {
     setShowEditEventModal(true)
     setEventNewStart(props.event.start)
     setEventNewEnd(props.event.end)
-  }
+  }, [props])
 
-  const onCurrentEventTimeChange = (dates) => {
-    console.log('called')
+  const onCurrentEventTimeChange = useCallback((dates) => {
     if (dates) {
       setEventNewStart(+dates[0])
       setEventNewEnd(+dates[1])
     }
-  }
-  const closeModal = () => {
+  }, []); //why sometimes it doesnt ask for dependencies?
+
+  const closeModal = useCallback(() => {
     setShowEditEventModal(false)
-  }
+  }, [])
 
   return (
     <React.Fragment>
-      <AddEventModal
+      <MemoizedAddEventModal
         editMode={true}
         eventTitle={props.event.title}
         visible={showEditEventModal}
@@ -59,7 +60,7 @@ function EventHighlighter(props) {
           ...eventHighlighter,
         }}
       >
-        {props.event.title} <br />
+        {props.event.title} <p />
         <span className='text-xs'>
           {moment(props.event.start).format('hh:mm a')} -{' '}
           {moment(props.event.end).format('hh:mm a')}
@@ -69,4 +70,4 @@ function EventHighlighter(props) {
   )
 }
 
-export default EventHighlighter
+export const MemoizedEventHighlighter = React.memo(EventHighlighter);

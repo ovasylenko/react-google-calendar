@@ -1,3 +1,3 @@
-import Calendar from './calendar';
+import { MemoizedSkillCrucialCalendar } from './calendar';
 
-export default Calendar;
+export default MemoizedSkillCrucialCalendar;

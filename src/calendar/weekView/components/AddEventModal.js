@@ -1,6 +1,6 @@
 import { Modal, Button } from 'antd'
-import { useState, useEffect } from 'react'
-import AddEvent from './AddEvent'
+import React, { useState, useEffect, useCallback } from 'react'
+import { MemoizedAddEvent } from './AddEvent'
 
 function AddEventModal(props) {
   const [title, setTitle] = useState('')
@@ -12,9 +12,9 @@ function AddEventModal(props) {
     }
   }, [props])
 
-  const handleTitleChange = (event) => {
+  const handleTitleChange = useCallback((event) => {
     setTitle(event.target.value)
-  }
+  }, []);
 
   const handleOk = () => {
     props.onOk(title)
@@ -34,7 +34,7 @@ function AddEventModal(props) {
         </Button>,
       ]}
     >
-      <AddEvent
+      <MemoizedAddEvent
         title={title}
         onTitleChange={handleTitleChange}
         start={props.eventStart}
@@ -44,4 +44,4 @@ function AddEventModal(props) {
     </Modal>
   )
 }
-export default AddEventModal
+export const MemoizedAddEventModal = React.memo(AddEventModal);

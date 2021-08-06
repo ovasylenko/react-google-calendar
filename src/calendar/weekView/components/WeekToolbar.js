@@ -1,4 +1,5 @@
-import moment from 'moment'
+import moment from 'moment';
+import React from 'react'
 import { ReactComponent as ArrowNext } from '../../../images/arrow-next.svg'
 import { ReactComponent as ArrowPrev } from '../../../images/arrow-prev.svg'
 
@@ -40,4 +41,4 @@ function WeekToolbar(props) {
   )
 }
 
-export default WeekToolbar
+export const MemoizedWeekToolbar = React.memo(WeekToolbar)

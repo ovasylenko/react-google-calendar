@@ -1,5 +1,6 @@
 import { Row, Col } from 'antd';
 import { isTodaysDate } from '../../utils';
+import React from 'react'
 
 function WeekHeader(props) {
   return (
@@ -25,4 +26,4 @@ function WeekHeader(props) {
   );
 }
 
-export default WeekHeader;
+export const MemoizedWeekHeader = React.memo(WeekHeader);
