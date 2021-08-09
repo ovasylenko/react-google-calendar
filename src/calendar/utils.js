@@ -1,21 +1,41 @@
 import moment from 'moment'
+import { DateTime } from 'luxon'
 
-export const getAllDaysInTheWeek = (currentDate = moment()) => {
-  const weekStart = currentDate.clone().startOf('week')
 
+export const getAllDaysInTheWeek = (currentDate = DateTime.now()) => {
+  const weekStart = currentDate.set({weekday: 1})
   const days = Array.from(Array(7))
     .map((day, index) => index)
-    .map((day) =>
-      moment(weekStart).add(day, 'days').set('minutes', 0).set('seconds', 0)
-    )
-    .map((momentObj) => ({
-      date: momentObj.date(),
-      dateStamp: +momentObj,
-      weekDayName: momentObj.format('ddd'),
-    }))
-
+    .map((day) => {
+      return weekStart
+        .plus({ days: day })
+        .set({ minute: 0, second: 0 })
+      })
+      .map((luxonObj) => (
+        {
+          date: luxonObj.get('day'),
+          dateStamp: +luxonObj,
+          weekDayName: luxonObj.weekdayShort,
+        }))
   return days
 }
+
+// export const ggetAllDaysInTheWeek = (currentDate = moment()) => {
+//   const weekStart = currentDate.clone().startOf('week')
+//   console.log(weekStart)
+//   const days = Array.from(Array(7))
+//     .map((day, index) => index)
+//     .map((day) =>
+//       moment(weekStart).add(day, 'days').set('minutes', 0).set('seconds', 0)
+//     )
+//     .map((momentObj) => ({
+//       date: momentObj.date(),
+//       dateStamp: +momentObj,
+//       weekDayName: momentObj.format('ddd'),
+//     }))
+
+//   return days
+// }
 
 export const times = Array.from(Array(24)).map((it, index) => index)
 

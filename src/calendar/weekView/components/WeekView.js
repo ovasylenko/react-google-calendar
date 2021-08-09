@@ -1,5 +1,6 @@
 import React, { useState, useCallback } from 'react'
 import moment from 'moment'
+import { DateTime } from 'luxon'
 import { MemoizedAddEventModal } from './AddEventModal'
 import { MemoizedWeekToolbar } from './WeekToolbar'
 import { MemoizedWeekHeader } from './WeekHeader'
@@ -10,26 +11,26 @@ import Calendar from 'react-calendar'
 import '../../../styles/Calendar.css'
 
 function WeekView({ events, onEventDelete, onEventUpdate, onNewEvent }) {
-  const [startDate, setStartDate] = useState(+moment())
+  const [startDate, setStartDate] = useState(+DateTime.now())
   const [weekDays, setWeekDays] = useState(getAllDaysInTheWeek())
   const [showAddEventModal, setShowAddEventModal] = useState(false)
   const [eventStart, setEventStart] = useState(null)
   const [eventEnd, setEventEnd] = useState(null)
 
   const goToNextWeek = useCallback(() => {
-    const dateAfter7Days = moment(startDate).add(7, 'days')
+    const dateAfter7Days = DateTime.fromMillis(startDate).plus({ days: 7 })
     setStartDate(+dateAfter7Days)
     setWeekDays(getAllDaysInTheWeek(dateAfter7Days))
   }, [startDate]);
 
   const goToPreviousWeek = useCallback(() => {
-    const dateBefore7Days = moment(startDate).subtract(7, 'days')
+    const dateBefore7Days = DateTime.fromMillis(startDate).minus({days: 7})
     setStartDate(+dateBefore7Days)
     setWeekDays(getAllDaysInTheWeek(dateBefore7Days))
-  }, [startDate]); //why I cant put weekDays in the array of dependencies
+  }, [startDate]);
 
   const goToToday = useCallback(() => {
-    setStartDate(+moment())
+    setStartDate(+DateTime.now())
     setWeekDays(getAllDaysInTheWeek())
   }, []);
 
@@ -59,6 +60,7 @@ function WeekView({ events, onEventDelete, onEventUpdate, onNewEvent }) {
     setEventStart(+dates[0])
     setEventEnd(+dates[1])
   }, []);
+
   return (
     <div className='px-4 py-12 w-full'>
       <MemoizedAddEventModal
@@ -80,10 +82,9 @@ function WeekView({ events, onEventDelete, onEventUpdate, onNewEvent }) {
       <div className='flex justify-center content-around w-full'>
         <Calendar
           value={new Date(startDate)}
-          locale='en-US'
           onClickDay={(val) => {
-            setStartDate(moment(val))
-            setWeekDays(getAllDaysInTheWeek(moment(val)))
+            setStartDate(+DateTime.fromJSDate(val))
+            setWeekDays(getAllDaysInTheWeek(DateTime.fromJSDate(val)))
           }}
           className='react-calendar h-full ml-16 p-3 shadow-lg rounded-xl'
         />
