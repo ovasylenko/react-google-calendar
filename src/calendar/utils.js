@@ -20,23 +20,6 @@ export const getAllDaysInTheWeek = (currentDate = DateTime.now()) => {
   return days
 }
 
-// export const ggetAllDaysInTheWeek = (currentDate = moment()) => {
-//   const weekStart = currentDate.clone().startOf('week')
-//   console.log(weekStart)
-//   const days = Array.from(Array(7))
-//     .map((day, index) => index)
-//     .map((day) =>
-//       moment(weekStart).add(day, 'days').set('minutes', 0).set('seconds', 0)
-//     )
-//     .map((momentObj) => ({
-//       date: momentObj.date(),
-//       dateStamp: +momentObj,
-//       weekDayName: momentObj.format('ddd'),
-//     }))
-
-//   return days
-// }
-
 export const times = Array.from(Array(24)).map((it, index) => index)
 
 export const generateWeekViewCoordinates = (event, startDate) => {

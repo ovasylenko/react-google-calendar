@@ -1,13 +1,20 @@
-import moment from 'moment'
+// import moment from 'moment'
+import { DateTime } from 'luxon'
 
 const CalendarEventHandler = (function () {
   function addEvent(allEvents, newEvent) {
-    const time = moment(newEvent.start).hours()
+    console.log('newEvent', newEvent)
+
+    const time = DateTime.fromMillis(newEvent.start).get('hour')
+    // const time = moment(newEvent.start).hours()
     const eventWithMeetInfo = {
       ...newEvent,
-      startWeek: moment(newEvent.start).week(),
-      endWeek: moment(newEvent.end).week(),
+      startWeek: DateTime.fromMillis(newEvent.start).weekNumber,
+      endWeek: DateTime.fromMillis(newEvent.end).weekNumber,
+      // startWeek: moment(newEvent.start).week(),
+      // endWeek: moment(newEvent.end).week(),
     }
+    console.log('eventWithMeetInfo', eventWithMeetInfo)
     if (allEvents[time]) {
       allEvents[time].push(eventWithMeetInfo)
     } else {
