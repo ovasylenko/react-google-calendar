@@ -3,7 +3,7 @@ import { DateTime } from 'luxon'
 
 
 export const getAllDaysInTheWeek = (currentDate = DateTime.now()) => {
-  const weekStart = currentDate.set({weekday: 1})
+  const weekStart = currentDate.set({weekday: 0})
   const days = Array.from(Array(7))
     .map((day, index) => index)
     .map((day) => {

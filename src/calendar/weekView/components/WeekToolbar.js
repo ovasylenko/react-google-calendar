@@ -3,8 +3,8 @@ import React from 'react'
 import { ReactComponent as ArrowNext } from '../../../images/arrow-next.svg'
 import { ReactComponent as ArrowPrev } from '../../../images/arrow-prev.svg'
 import Dropdown from './DropdownButton';
-import { Menu, Transition } from '@headlessui/react'
-import { ChevronDownIcon } from '@heroicons/react/solid'
+// import { Menu, Transition } from '@headlessui/react'
+// import { ChevronDownIcon } from '@heroicons/react/solid'
 
 function WeekToolbar(props) {
   const formattedDate = moment(props.startDate).format('MMM YYYY')
