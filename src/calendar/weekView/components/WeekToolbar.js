@@ -2,6 +2,9 @@ import moment from 'moment';
 import React from 'react'
 import { ReactComponent as ArrowNext } from '../../../images/arrow-next.svg'
 import { ReactComponent as ArrowPrev } from '../../../images/arrow-prev.svg'
+import Dropdown from './DropdownButton';
+import { Menu, Transition } from '@headlessui/react'
+import { ChevronDownIcon } from '@heroicons/react/solid'
 
 function WeekToolbar(props) {
   const formattedDate = moment(props.startDate).format('MMM YYYY')
@@ -11,6 +14,7 @@ function WeekToolbar(props) {
       <div className='ml-16 text-4xl text-gray-600'>SkillCrucial Calendar</div>
       <div className='flex justify-end content-center items-center'>
         <div className='flex justify-center content-center mx-4'>
+          <Dropdown />
           <button
             onClick={props.goToPreviousWeek}
             className='hover:bg-gray-100 w-9 p-1 h-9 rounded-full flex justify-center items-center'
