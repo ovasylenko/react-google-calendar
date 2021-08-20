@@ -3,14 +3,16 @@ import Header from './Header'
 import Widget from './Widget'
 import MainCalendar from './MainCalendar'
 
+
+
 const Calendar = () => {
   return (<div>
     <div>
-      <Header/>
+      <Header />
     </div>
     <div className='flex'>
-      <Widget/>
-      <MainCalendar/>
+      <Widget />
+      <MainCalendar />
     </div>
   </div>)
 }
