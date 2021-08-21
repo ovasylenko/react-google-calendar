@@ -8,13 +8,11 @@ const MainCalendar = () => {
       <div className="grid grid-cols-8">
         <div className="mt-9 pr-2">
           {hours.map((hour, index) => {
-            while(index < hours.length - 1) {
               return (
                 <div className="grid h-12 text-right" key={hour}>
                   {index + 1}
                 </div>
               );
-            }
           })}
         </div>
         {days.map((it) => {
