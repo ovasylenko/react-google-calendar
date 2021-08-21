@@ -1,18 +1,43 @@
-import { days, hours } from './utils'
+import { days, hours } from "./utils";
+import HeaderForMainCalendar from "./header-for-main-calendar";
 
 const MainCalendar = () => {
   return (
-    <div className='flex'>
-      {days.map((it) => {
-        // return <div key={it}>{it}</div>
-      return <div
-      className=''
-      key={it}>{hours.map((it) => {
-        return <div key={it} className='w-20'>{it}</div>
-      })}</div>
-      })}
+    <div>
+      <HeaderForMainCalendar />
+      <div className="grid grid-cols-8">
+        <div className="mt-9 pr-2">
+          {hours.map((hour, index) => {
+            while(index < hours.length - 1) {
+              return (
+                <div className="grid h-12 text-right" key={hour}>
+                  {index + 1}
+                </div>
+              );
+            }
+          })}
+        </div>
+        {days.map((it) => {
+          return (
+            <div>
+              <div key={it}>
+                {hours.map((it) => {
+                  return (
+                    <div
+                      key={it}
+                      className="grid border h-12 w-auto items-center text-center"
+                    >
+                      {it}
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          );
+        })}
+      </div>
     </div>
-  )
+  );
 }
 
 export default MainCalendar

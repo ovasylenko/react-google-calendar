@@ -6,15 +6,17 @@ import MainCalendar from './MainCalendar'
 
 
 const Calendar = () => {
-  return (<div>
+  return (
     <div>
-      <Header />
+      <div>
+        <Header />
+      </div>
+      <div className="grid grid-cols-2">
+        <Widget />
+        <MainCalendar />
+      </div>
     </div>
-    <div className='flex'>
-      <Widget />
-      <MainCalendar />
-    </div>
-  </div>)
+  );
 }
 
 export default Calendar
