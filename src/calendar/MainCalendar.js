@@ -1,15 +1,15 @@
 import { days, hours } from "./utils";
-import HeaderForMainCalendar from "./header-for-main-calendar";
+import HeaderForMainCalendar from "./HeaderForMainCalendar";
 
 const MainCalendar = () => {
   return (
     <div>
       <HeaderForMainCalendar />
       <div className="grid grid-cols-8">
-        <div className="mt-9 pr-2">
+        <div>
           {hours.map((hour, index) => {
               return (
-                <div className="grid h-12 text-right" key={hour}>
+                <div className="grid h-12 text-right pr-4 pt-9" key={hour}>
                   {index + 1}
                 </div>
               );
