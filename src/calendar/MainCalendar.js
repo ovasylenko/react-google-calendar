@@ -9,7 +9,7 @@ const MainCalendar = () => {
         <div>
           {hours.map((hour, index) => {
               return (
-                <div className="grid h-12 text-right pr-4 pt-9" key={hour}>
+                <div className="grid h-12 text-right pr-4 pt-9" key={index}>
                   {index + 1}
                 </div>
               );
