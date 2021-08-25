@@ -1,24 +1,19 @@
+import React  from 'react';
 import { DateTime, Duration } from 'luxon'
 
-const timeZone = DateTime.fromISO('2019-06-25T05:00:00Z').toSQL().slice(-6, -3)
+const timeZone = DateTime.local().toLocaleString(DateTime.DATETIME_FULL).slice(-5)
 console.log(timeZone)
 
 const dateFull = `${DateTime.now().monthLong} ${DateTime.now().year}`
 console.log(`${dateFull.slice(0,1).toUpperCase()}${dateFull.slice(1)}`)
 
-const startOfDay = DateTime.local().startOf('day').hour
-console.log( 'startOfDay', startOfDay )
-
-const endOfDay = DateTime.local().endOf('day').hour
-console.log( 'endOfDay', endOfDay )
-
 const currentDay = DateTime.local().day
 
-const currentWeek = () => {
+export const currentWeek = () => {
   const startOfWeek = DateTime.local().startOf('week').weekdayShort
   const dateStartOfWeek = DateTime.local().startOf('week').day
   console.log('date', dateStartOfWeek)
-  const dayDuration = Duration.fromObject({day: 1})
+  const dayDuration = Duration.fromObject({days: 1})
   let newArr = [[ startOfWeek, dateStartOfWeek ]]
   let nextDay = DateTime.local().startOf('week')
   console.log(nextDay)
@@ -33,9 +28,11 @@ const currentWeek = () => {
 const weekArray = currentWeek()
 
 const HeaderForMainCalendar = () => {
+
+
   return (
-      <div className="grid grid-cols-8 justify-between align-center items-center text-center h-auto w-auto font-bold text-lg">
-        <div className="grid justify-end align-end text-m font-light mr-4 text-sm">GMT{timeZone}</div>
+      <div className="grid grid-cols-8 justify-between align-center items-center text-center h-auto w-auto font-bold text-lg min-w-max">
+        <div className="grid justify-end align-end text-m font-light mr-4 text-sm">{timeZone}</div>
         {weekArray.map((weekDay, index) => {
           return (
             <div key={index} className="grid grid-cols-2 justify-center items-center text-center border h-12 px-2">
