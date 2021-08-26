@@ -2,7 +2,7 @@ import React from 'react'
 import { ReactComponent as ArrowNext } from './../images/arrow-next.svg'
 import { ReactComponent as ArrowPrev } from './../images/arrow-prev.svg'
 import { DateTime } from 'luxon'
-import Dropdown from './DropDownButton'
+import Dropdown from './DropdownButton'
 
 
 
