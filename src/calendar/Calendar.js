@@ -11,7 +11,7 @@ const Calendar = () => {
       <div>
         <Header />
       </div>
-      <div className="grid grid-cols-2">
+      <div className="grid grid-flow-col">
         <Widget />
         <MainCalendar />
       </div>
