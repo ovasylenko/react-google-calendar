@@ -5,7 +5,7 @@ import MainCalendar from './MainCalendar'
 
 
 
-const Calendar = () => {
+const Calendar = ( ) => {
   return (
     <div>
       <div>

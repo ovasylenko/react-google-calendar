@@ -1,34 +1,8 @@
 import React  from 'react';
-import { DateTime, Duration } from 'luxon'
-
-const timeZone = DateTime.local().toLocaleString(DateTime.DATETIME_FULL).slice(-5)
-console.log(timeZone)
-
-const dateFull = `${DateTime.now().monthLong} ${DateTime.now().year}`
-console.log(`${dateFull.slice(0,1).toUpperCase()}${dateFull.slice(1)}`)
-
-const currentDay = DateTime.local().day
-
-export const currentWeek = () => {
-  const startOfWeek = DateTime.local().startOf('week').weekdayShort
-  const dateStartOfWeek = DateTime.local().startOf('week').day
-  console.log('date', dateStartOfWeek)
-  const dayDuration = Duration.fromObject({days: 1})
-  let newArr = [[ startOfWeek, dateStartOfWeek ]]
-  let nextDay = DateTime.local().startOf('week')
-  console.log(nextDay)
-  for(let i = 1; i < 7; i += 1) {
-    nextDay = nextDay.plus(dayDuration)
-    newArr = [...newArr, [ nextDay.weekdayShort, nextDay.day ]]
-   }
-   console.log(newArr)
-   return newArr
-}
-
-const weekArray = currentWeek()
+import { currDurationArr, timeZone, currentDay } from './utils'
 
 const HeaderForMainCalendar = () => {
-
+  const weekArray = currDurationArr('week', 'day')
 
   return (
       <div className="grid grid-cols-8 justify-between align-center items-center text-center h-auto w-auto font-bold text-lg min-w-max">
