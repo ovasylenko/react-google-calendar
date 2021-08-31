@@ -1,5 +1,5 @@
 import React  from 'react';
-import { currDurationArr, timeZone, currentDay } from './utils'
+import { currDurationArr, timeZone, currentDayDate } from './utils'
 
 const HeaderForMainCalendar = () => {
   const weekArray = currDurationArr('week', 'day')
@@ -11,7 +11,7 @@ const HeaderForMainCalendar = () => {
           return (
             <div key={index} className="grid grid-cols-2 justify-center items-center text-center border h-12 px-2">
               <div className="grid uppercase font-light" >{weekDay[0]}</div>
-              <div className={(weekDay[1] === currentDay) && "bg-blue-500 text-white font-bold border-2 border-blue-600 rounded-full"}>{weekDay[1]}</div>
+              <div className={(weekDay[1] === currentDayDate) && "bg-blue-500 text-white font-bold border-2 border-blue-600 rounded-full"}>{weekDay[1]}</div>
             </div>
           );
         })}

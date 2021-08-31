@@ -7,7 +7,9 @@ import { DateTime, Duration } from 'luxon'
 export const timeZone = DateTime.local().toLocaleString(DateTime.DATETIME_FULL).slice(-5)
 // console.log('timeZone2', DateTime.local().offsetNameShort)
 
-export const currentDay = DateTime.local()
+export const currentDayDate = DateTime.local().day
+export const currentDayShort = DateTime.local().weekdayShort
+export const currentHour = DateTime.local().startOf('hour').toLocaleString(DateTime.TIME_SIMPLE)
 
 export function currDurationArr(durr, partOfDur) {
   const startOfDur = DateTime.local().startOf(durr)[partOfDur]

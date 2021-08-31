@@ -1,5 +1,5 @@
 import HeaderForMainCalendar from "./HeaderForMainCalendar";
-import { currDurationArr } from './utils'
+import { currDurationArr, currentDayDate, currentDayShort, currentHour } from './utils'
 
 const MainCalendar = () => {
   const hoursArray = currDurationArr('day', 'hour')
@@ -26,7 +26,7 @@ const MainCalendar = () => {
                   return (
                     <div
                       key={index}
-                      className="grid border h-12 w-auto items-center text-center"
+                      className={(day[0] === currentDayShort && day[1] === currentDayDate && hour === currentHour) ? "grid border border-blue-500 border-opacity-75 h-12 w-auto items-center text-center " : "grid border h-12 w-auto items-center text-center"}
                     >
                       {hour}
                     </div>
