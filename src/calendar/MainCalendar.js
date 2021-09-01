@@ -1,4 +1,5 @@
 import HeaderForMainCalendar from "./HeaderForMainCalendar";
+import TimePanel from "./TimePanel";
 import { currDurationArr, currentDayDate, currentDayShort, currentHour } from './utils'
 
 const MainCalendar = () => {
@@ -9,15 +10,7 @@ const MainCalendar = () => {
     <div>
       <HeaderForMainCalendar />
       <div className="grid grid-cols-8">
-        <div>
-          {hoursArray.map((hour, index) => {
-              return (
-                <div className="grid h-12 text-right pr-4 pt-9" key={index}>
-                  {hour}
-                </div>
-              );
-          })}
-        </div>
+        <TimePanel />
         {weekArray.map((day) => {
           return (
             <div>

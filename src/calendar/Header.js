@@ -19,6 +19,7 @@ const Header = () => {
         </div>
       </div>
       <div className='flex justify-end content-center items-center'>
+      <div>{dateFull}</div>
         <div className='flex justify-center content-center mx-4'>
           <Dropdown />
           <button

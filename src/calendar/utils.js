@@ -29,15 +29,4 @@ export function currDurationArr(durr, partOfDur) {
   return newArr
 }
 
-// events= {
-//485456784658236ngg: { id: '485456784658236ngg'
-//                      start: 78423767856378,
-//                      end: 462736327632785687,
-//                      title: 'sbkrgbkdf',
-//                     },
-//ghi594848t984uw9rug: { id: 'ghi594848t984uw9rug'
-//                      start: 78423767856378,
-//                      end: 462736327632785687,
-//                      title: 'sbkrgbkdf',
-//                     }
-//}
+
